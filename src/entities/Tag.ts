@@ -1,24 +1,18 @@
-import { Column, CreateDateColumn, Entity, PrimaryColumn, UpdateDateColumn } from 'typeorm'
+import { Entity, PrimaryColumn, Column, CreateDateColumn, UpdateDateColumn } from 'typeorm'
 import { v4 as uuidv4 } from 'uuid'
 
 import { tableNames } from '../constants'
 
-@Entity(tableNames.USERS)
-class User {
+@Entity(tableNames.TAGS)
+class Tag {
     @PrimaryColumn()
     readonly id: string
 
     @Column()
     name: string
 
-    @Column()
-    email: string
-
-    @Column()
-    admin: boolean
-
     @CreateDateColumn()
-    readonly created_at: Date
+    created_at: Date
 
     @UpdateDateColumn()
     updated_at: Date
@@ -28,4 +22,4 @@ class User {
     }
 }
 
-export default User
+export default Tag

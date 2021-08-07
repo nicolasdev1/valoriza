@@ -1,3 +1,4 @@
 import IUserRequest from './IUserRequest'
+import ITagRequest from './ITagRequest'
 
-export { IUserRequest }
+export { IUserRequest, ITagRequest }

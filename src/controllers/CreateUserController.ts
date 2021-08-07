@@ -1,12 +1,12 @@
 import { Request, Response } from 'express'
 
-import { CreateUserService } from '../services'
-import { IUserRequest } from '../interfaces'
 import { User } from '../entities'
+import { IUserRequest } from '../interfaces'
+import { CreateUserService } from '../services'
 
 class CreateUserController {
     async call(request: Request, response: Response) {
-        const { name, email, admin }:IUserRequest = request.body
+        const { name, email, admin }: IUserRequest = request.body
 
         const createUserService: CreateUserService = new CreateUserService()
 
