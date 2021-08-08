@@ -7,18 +7,19 @@ import { CreateComplimentService } from '../services'
 class CreateComplimentController {
    async call(request: Request, response: Response): Promise<Response> {
       const {
-         tag_id,
-         user_sender,
          user_receiver,
+         tag_id,
          message
-      }: IComplimentRequest = request.body
+      }: Omit<IComplimentRequest, "user_sender"> = request.body
+
+      const { user_id: user_sender }: Request = request
 
       const createComplimentService: CreateComplimentService = new CreateComplimentService()
 
       const compliment: Compliment = await createComplimentService.execute({
-         tag_id,
          user_sender,
          user_receiver,
+         tag_id,
          message
       })
 

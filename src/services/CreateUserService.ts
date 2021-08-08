@@ -3,12 +3,12 @@ import { hash } from 'bcryptjs'
 
 import { User } from '../entities'
 import { AppError } from '../errors'
-import { IUserRequest } from '../interfaces'
+import { ICreateUserRequest } from '../interfaces'
 import { UserRepository } from '../repositories'
 import { passwordEncryption } from '../constants'
 
 class CreateUserService {
-    async execute({ name, email, password, admin }: IUserRequest): Promise<User> {
+    async execute({ name, email, password, admin }: ICreateUserRequest): Promise<User> {
         const userRepository: UserRepository = getCustomRepository(UserRepository)
 
         if (!email) {

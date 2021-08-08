@@ -19,6 +19,4 @@ app.use(router)
 
 app.use(handleErrorMiddleware)
 
-const port: string | Number = process.env.PORT || 7001
-
-app.listen(port, (): void => console.log(`Server is running in port ${port}...`))
+export default app

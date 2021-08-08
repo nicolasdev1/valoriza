@@ -1,16 +1,26 @@
 import { NextFunction, Request, Response } from 'express'
 
-import { HttpStatusCode } from '../enums'
 import { AppError } from '../errors'
+import { HttpStatusCode } from '../enums'
+import { GetUserService } from '../services'
+import { User } from '../entities'
 
-const ensureAdministratorMiddleware = (_: Request, __: Response, next: NextFunction): void => {
-    const admin: boolean = true
+const ensureAdministratorMiddleware = async (
+   request: Request,
+   _: Response,
+   next: NextFunction
+): Promise<void> => {
+   const { user_id }: Request = request
 
-    if (!admin) {
-        throw new AppError('Unauthorized', HttpStatusCode.UNAUTHORIZED)
-    }
+   const getUserService: GetUserService = new GetUserService()
 
-    return next()
+   const { admin }: User = await getUserService.execute(user_id)
+
+   if (!admin) {
+      throw new AppError('You are not authorized to access this resource', HttpStatusCode.FORBIDDEN)
+   }
+
+   return next()
 }
 
 export default ensureAdministratorMiddleware
