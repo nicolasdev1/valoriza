@@ -3,7 +3,7 @@ import { NextFunction, Request, Response } from 'express'
 import { HttpStatusCode } from '../enums'
 import { AppError } from '../errors'
 
-const handleErrorMiddleware = (error: Error, _: Request, response: Response, __: NextFunction) => {
+const handleErrorMiddleware = (error: Error, _: Request, response: Response, __: NextFunction): Response => {
     if (error instanceof AppError) {
         return response
                 .status(error.statusCode)

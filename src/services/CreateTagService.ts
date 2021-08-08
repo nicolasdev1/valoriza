@@ -1,11 +1,12 @@
 import { getCustomRepository } from 'typeorm'
 
+import { Tag } from '../entities'
 import { AppError } from '../errors'
 import { ITagRequest } from '../interfaces'
 import { TagRepository } from '../repositories'
 
 class CreateTagService {
-    async execute({ name }: ITagRequest) {
+    async execute({ name }: ITagRequest): Promise<Tag> {
         const tagRepository: TagRepository = getCustomRepository(TagRepository)
 
         if (!name) {
@@ -21,6 +22,7 @@ class CreateTagService {
         const tag = tagRepository.create({ name })
 
         await tagRepository.save(tag)
+
         return tag
     }
 }

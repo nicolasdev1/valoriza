@@ -5,7 +5,7 @@ import { ITagRequest } from '../interfaces'
 import { CreateTagService } from '../services'
 
 class CreateTagController {
-    async call(request: Request, response: Response) {
+    async call(request: Request, response: Response): Promise<Response> {
         const { name }: ITagRequest = request.body
 
         const createTagService: CreateTagService = new CreateTagService()

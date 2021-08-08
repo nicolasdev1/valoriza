@@ -1,4 +1,5 @@
 export default {
     USERS: 'users',
-    TAGS: 'tags'
+    TAGS: 'tags',
+    COMPLIMENTS: 'compliments'
 }
