@@ -5,6 +5,7 @@ import { IComplimentRequest } from '../interfaces'
 import { CreateComplimentService } from '../services'
 
 class CreateComplimentController {
+
    async call(request: Request, response: Response): Promise<Response> {
       const {
          user_receiver,
@@ -25,6 +26,7 @@ class CreateComplimentController {
 
       return response.json(compliment)
    }
+
 }
 
 export default CreateComplimentController

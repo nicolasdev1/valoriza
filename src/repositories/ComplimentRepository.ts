@@ -5,17 +5,23 @@ import { IComplimentRepository } from '../interfaces'
 
 @EntityRepository(Compliment)
 class ComplimentRepository extends Repository<Compliment> implements IComplimentRepository {
-   async findByUserReceiver(user_id: string): Promise<Compliment[]> {
-      const complimentsReceived: Promise<Compliment[]> = this.find({ user_receiver: user_id })
+
+   async findByUserReceiver(user_receiver: string): Promise<Compliment[]> {
+      const complimentsReceived: Promise<Compliment[]> = this.find({
+         where: { user_receiver }
+      })
 
       return complimentsReceived
    }
 
-   async findByUserSender(user_id: string): Promise<Compliment[]> {
-      const complimentsSent: Promise<Compliment[]> = this.find({ user_sender: user_id })
+   async findByUserSender(user_sender: string): Promise<Compliment[]> {
+      const complimentsSent: Promise<Compliment[]> = this.find({
+         where: { user_sender }
+      })
 
       return complimentsSent
    }
+
 }
 
 export default ComplimentRepository

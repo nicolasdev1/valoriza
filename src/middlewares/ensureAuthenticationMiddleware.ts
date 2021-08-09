@@ -1,6 +1,10 @@
-import { Request, Response, NextFunction,  } from 'express'
-import { IncomingHttpHeaders } from 'http'
+import {
+   Request,
+   Response,
+   NextFunction
+} from 'express'
 import { verify } from 'jsonwebtoken'
+import { IncomingHttpHeaders } from 'http'
 
 import { AppError } from '../errors'
 import { HttpStatusCode } from '../enums'
@@ -10,7 +14,8 @@ const ensureAuthenticationMiddleware = (
    request: Request,
    _: Response,
    next: NextFunction
-): void => {
+): void | never => {
+
    const { authorization }: IncomingHttpHeaders = request.headers
 
    if (!authorization) {
@@ -28,6 +33,7 @@ const ensureAuthenticationMiddleware = (
    } catch (error) {
       throw new AppError('Invalid token', HttpStatusCode.UNAUTHORIZED)
    }
+
 }
 
 export default ensureAuthenticationMiddleware

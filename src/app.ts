@@ -4,7 +4,7 @@ import express, { Express } from 'express'
 
 import 'express-async-errors'
 
-import './database'
+import './database/connection'
 
 import router from './routes'
 import { handleErrorMiddleware, loggerMiddleware } from './middlewares'

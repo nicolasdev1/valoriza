@@ -4,6 +4,7 @@ import { Compliment } from '../entities'
 import { ComplimentRepository } from '../repositories'
 
 class GetComplimentsUserReceivedService {
+
    async execute(user_id: string): Promise<Compliment[]> {
       const complimentRepository: ComplimentRepository = getCustomRepository(ComplimentRepository)
 
@@ -11,6 +12,7 @@ class GetComplimentsUserReceivedService {
 
       return compliments
    }
+
 }
 
 export default GetComplimentsUserReceivedService

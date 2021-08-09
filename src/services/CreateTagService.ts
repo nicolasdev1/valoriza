@@ -6,25 +6,27 @@ import { ITagRequest } from '../interfaces'
 import { TagRepository } from '../repositories'
 
 class CreateTagService {
-    async execute({ name }: ITagRequest): Promise<Tag> {
-        const tagRepository: TagRepository = getCustomRepository(TagRepository)
 
-        if (!name) {
-            throw new AppError('Name is required')
-        }
+   async execute({ name }: ITagRequest): Promise<Tag | never> {
+      const tagRepository: TagRepository = getCustomRepository(TagRepository)
 
-        const tagAlreadyExists = await tagRepository.findOne({ name })
+      if (!name) {
+         throw new AppError('Name is required')
+      }
 
-        if (tagAlreadyExists) {
-           throw new AppError(`Tag with name ${name} already exists`)
-        }
+      const tagAlreadyExists = await tagRepository.findOne({ name })
 
-        const tag = tagRepository.create({ name })
+      if (tagAlreadyExists) {
+         throw new AppError(`Tag with name ${name} already exists`)
+      }
 
-        await tagRepository.save(tag)
+      const tag = tagRepository.create({ name })
 
-        return tag
-    }
+      await tagRepository.save(tag)
+
+      return tag
+   }
+
 }
 
 export default CreateTagService

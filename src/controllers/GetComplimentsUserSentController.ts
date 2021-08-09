@@ -1,9 +1,10 @@
 import { Request, Response } from 'express'
-import { Compliment } from '../entities'
 
+import { Compliment } from '../entities'
 import { GetComplimentsUserSentService } from '../services'
 
 class GetComplimentsUserSentController {
+
    async call(request: Request, response: Response): Promise<Response> {
       const { user_id }: Request = request
 
@@ -13,6 +14,7 @@ class GetComplimentsUserSentController {
 
       return response.json(compliments)
    }
+
 }
 
 export default GetComplimentsUserSentController

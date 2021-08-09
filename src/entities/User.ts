@@ -1,10 +1,17 @@
-import { Column, CreateDateColumn, Entity, PrimaryColumn, UpdateDateColumn } from 'typeorm'
+import {
+   Column,
+   CreateDateColumn,
+   Entity,
+   PrimaryColumn,
+   UpdateDateColumn
+} from 'typeorm'
 import { v4 as uuidv4 } from 'uuid'
 
 import { tableNames } from '../constants'
 
 @Entity(tableNames.USERS)
 class User {
+
    @PrimaryColumn()
    readonly id: string
 
@@ -28,7 +35,8 @@ class User {
 
    constructor() {
       if (!this.id) this.id = uuidv4()
-    }
+   }
+
 }
 
 export default User

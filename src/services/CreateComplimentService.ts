@@ -1,17 +1,18 @@
 import { getCustomRepository } from 'typeorm'
 
-import { Compliment, User } from '../entities'
 import { AppError } from '../errors'
+import { Compliment, User } from '../entities'
 import { IComplimentRequest } from '../interfaces'
 import { ComplimentRepository, UserRepository } from '../repositories'
 
 class CreateComplimentService {
+
    async execute({
       user_sender,
       user_receiver,
       tag_id,
       message
-   }: IComplimentRequest): Promise<Compliment> {
+   }: IComplimentRequest): Promise<Compliment | never> {
       const complimentRepository: ComplimentRepository = getCustomRepository(ComplimentRepository)
       const userRepository: UserRepository = getCustomRepository(UserRepository)
 
@@ -36,6 +37,7 @@ class CreateComplimentService {
 
       return compliment
    }
+
 }
 
 export default CreateComplimentService

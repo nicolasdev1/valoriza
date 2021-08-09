@@ -1,6 +1,6 @@
-import { getCustomRepository } from 'typeorm'
 import { compare } from 'bcryptjs'
 import { sign } from 'jsonwebtoken'
+import { getCustomRepository } from 'typeorm'
 
 import { User } from '../entities'
 import { AppError } from '../errors'
@@ -9,7 +9,8 @@ import { IAuthenticateRequest } from '../interfaces'
 
 
 class AuthenticateService {
-   async execute({ email, password }: IAuthenticateRequest): Promise<string> {
+
+   async execute({ email, password }: IAuthenticateRequest): Promise<string | never> {
       const userRepository: UserRepository = getCustomRepository(UserRepository)
 
       const user: User = await userRepository.findOne({ email })
@@ -30,6 +31,7 @@ class AuthenticateService {
 
       return token
    }
+
 }
 
 export default AuthenticateService

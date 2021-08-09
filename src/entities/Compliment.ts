@@ -1,12 +1,20 @@
-import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, PrimaryColumn } from 'typeorm'
+import {
+   Column,
+   CreateDateColumn,
+   Entity,
+   JoinColumn,
+   ManyToOne,
+   PrimaryColumn
+} from 'typeorm'
 import { v4 as uuidv4 } from 'uuid'
 
-import { tableNames } from '../constants'
 import Tag from './Tag'
 import User from './User'
+import { tableNames } from '../constants'
 
 @Entity(tableNames.COMPLIMENTS)
 class Compliment {
+
    @PrimaryColumn()
    readonly id: string
 
@@ -40,6 +48,7 @@ class Compliment {
    constructor() {
       if (!this.id) this.id = uuidv4()
    }
+
 }
 
 export default Compliment

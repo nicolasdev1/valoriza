@@ -1,8 +1,14 @@
-import { MigrationInterface, QueryRunner, TableColumn, TableForeignKey } from 'typeorm'
+import {
+   MigrationInterface,
+   QueryRunner,
+   TableColumn,
+   TableForeignKey
+} from 'typeorm'
 
 import { tableNames } from '../../constants'
 
 class AddUserSenderToCompliments1628389997196 implements MigrationInterface {
+
    public async up(queryRunner: QueryRunner): Promise<void> {
       await queryRunner.addColumn(
          tableNames.COMPLIMENTS,
@@ -30,6 +36,7 @@ class AddUserSenderToCompliments1628389997196 implements MigrationInterface {
 
       await queryRunner.dropColumn(tableNames.COMPLIMENTS, 'user_sender')
    }
+
 }
 
 export { AddUserSenderToCompliments1628389997196 }

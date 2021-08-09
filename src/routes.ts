@@ -2,12 +2,13 @@ import { Router } from 'express'
 import { routesNomenclature } from './constants'
 
 import {
-   CreateUserController,
    CreateTagController,
+   CreateUserController,
    AuthenticateController,
    CreateComplimentController,
    GetComplimentsUserSentController,
-   GetComplimentsUserReceivedController
+   GetComplimentsUserReceivedController,
+   GetTagsController
 } from './controllers'
 import { ensureAdministratorMiddleware, ensureAuthenticationMiddleware } from './middlewares'
 
@@ -21,15 +22,18 @@ const createComplimentController: CreateComplimentController = new CreateComplim
 
 const getComplimentsUserSentController: GetComplimentsUserSentController = new GetComplimentsUserSentController()
 const getComplimentsUserReceivedController: GetComplimentsUserReceivedController = new GetComplimentsUserReceivedController()
+const getTagsController: GetTagsController = new GetTagsController()
 
 router.post(routesNomenclature.SESSIONS, authenticateController.call)
 
 router.use(ensureAuthenticationMiddleware)
+
 router.post(routesNomenclature.USERS, createUserController.call)
 router.post(routesNomenclature.TAGS, ensureAdministratorMiddleware, createTagController.call)
 router.post(routesNomenclature.COMPLIMENTS, createComplimentController.call)
 
 router.get(routesNomenclature.USERS_COMPLIMENTS_SENT, getComplimentsUserSentController.call)
 router.get(routesNomenclature.USERS_COMPLIMENTS_RECEIVED, getComplimentsUserReceivedController.call)
+router.get(routesNomenclature.TAGS, getTagsController.call)
 
 export default router

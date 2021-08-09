@@ -1,17 +1,19 @@
-import CreateUserService from './CreateUserService'
 import CreateTagService from './CreateTagService'
+import CreateUserService from './CreateUserService'
+import GetAllTagsService from './GetAllTagsService'
+import GetUserByIdService from './GetUserByIdService'
 import AuthenticateService from './AuthenticateService'
 import CreateComplimentService from './CreateComplimentService'
-import GetUserService from './GetUserService'
-import GetComplimentsUserReceivedService from './GetComplimentsUserReceivedService'
 import GetComplimentsUserSentService from './GetComplimentsUserSentService'
+import GetComplimentsUserReceivedService from './GetComplimentsUserReceivedService'
 
 export {
-   CreateUserService,
    CreateTagService,
+   CreateUserService,
+   GetAllTagsService,
+   GetUserByIdService,
    AuthenticateService,
    CreateComplimentService,
-   GetUserService,
-   GetComplimentsUserReceivedService,
-   GetComplimentsUserSentService
+   GetComplimentsUserSentService,
+   GetComplimentsUserReceivedService
 }

@@ -1,41 +1,43 @@
-import { getCustomRepository } from 'typeorm'
 import { hash } from 'bcryptjs'
+import { getCustomRepository } from 'typeorm'
 
 import { User } from '../entities'
 import { AppError } from '../errors'
-import { ICreateUserRequest } from '../interfaces'
 import { UserRepository } from '../repositories'
 import { passwordEncryption } from '../constants'
+import { ICreateUserRequest } from '../interfaces'
 
 class CreateUserService {
-    async execute({ name, email, password, admin }: ICreateUserRequest): Promise<User> {
-        const userRepository: UserRepository = getCustomRepository(UserRepository)
 
-        if (!email) {
-            throw new AppError('Email is required')
-        }
+   async execute({ name, email, password, admin }: ICreateUserRequest): Promise<User | never> {
+      const userRepository: UserRepository = getCustomRepository(UserRepository)
 
-        const userAlreadyExists: User = await userRepository.findOne({
-            email
-        })
+      if (!email) {
+         throw new AppError('Email is required')
+      }
 
-        if (userAlreadyExists) {
-            throw new AppError('User already exists')
-        }
+      const userAlreadyExists: User = await userRepository.findOne({
+         email
+      })
 
-        const passwordHash: string = await hash(password, passwordEncryption.SALT_LENGTH)
+      if (userAlreadyExists) {
+         throw new AppError('User already exists')
+      }
 
-        const user: User = userRepository.create({
-            name,
-            email,
-            password: passwordHash,
-            admin
-        })
+      const passwordHash: string = await hash(password, passwordEncryption.SALT_LENGTH)
 
-        await userRepository.save(user)
+      const user: User = userRepository.create({
+         name,
+         email,
+         password: passwordHash,
+         admin
+      })
 
-        return user
-    }
+      await userRepository.save(user)
+
+      return user
+   }
+
 }
 
 export default CreateUserService

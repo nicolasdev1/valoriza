@@ -4,6 +4,7 @@ import { AuthenticateService } from '../services'
 import { IAuthenticateRequest } from '../interfaces'
 
 class AuthenticateController {
+
    async call(request: Request, response: Response): Promise<Response> {
       const { email, password }: IAuthenticateRequest = request.body
 
@@ -13,6 +14,7 @@ class AuthenticateController {
 
       return response.json(token)
    }
+
 }
 
 export default AuthenticateController

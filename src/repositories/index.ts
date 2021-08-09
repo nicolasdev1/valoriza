@@ -1,5 +1,9 @@
-import UserRepository from './UserRepository'
 import TagRepository from './TagRepository'
+import UserRepository from './UserRepository'
 import ComplimentRepository from './ComplimentRepository'
 
-export { UserRepository, TagRepository, ComplimentRepository }
+export {
+   TagRepository,
+   UserRepository,
+   ComplimentRepository
+}
