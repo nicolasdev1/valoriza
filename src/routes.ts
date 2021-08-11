@@ -1,5 +1,4 @@
 import { Router } from 'express'
-import { routesNomenclature } from './constants'
 
 import {
    CreateTagController,
@@ -10,6 +9,7 @@ import {
    GetComplimentsUserReceivedController,
    GetTagsController
 } from './controllers'
+import { routesNomenclature } from './constants'
 import { ensureAdministratorMiddleware, ensureAuthenticationMiddleware } from './middlewares'
 
 const router: Router = Router()
@@ -25,10 +25,10 @@ const getComplimentsUserReceivedController: GetComplimentsUserReceivedController
 const getTagsController: GetTagsController = new GetTagsController()
 
 router.post(routesNomenclature.SESSIONS, authenticateController.call)
+router.post(routesNomenclature.USERS, createUserController.call)
 
 router.use(ensureAuthenticationMiddleware)
 
-router.post(routesNomenclature.USERS, createUserController.call)
 router.post(routesNomenclature.TAGS, ensureAdministratorMiddleware, createTagController.call)
 router.post(routesNomenclature.COMPLIMENTS, createComplimentController.call)
 

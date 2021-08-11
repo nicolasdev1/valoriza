@@ -7,7 +7,6 @@ import { AppError } from '../errors'
 import { UserRepository } from '../repositories'
 import { IAuthenticateRequest } from '../interfaces'
 
-
 class AuthenticateService {
 
    async execute({ email, password }: IAuthenticateRequest): Promise<string | never> {

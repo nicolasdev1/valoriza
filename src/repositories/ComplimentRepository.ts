@@ -1,10 +1,9 @@
 import { EntityRepository, Repository } from 'typeorm'
 
 import { Compliment } from '../entities'
-import { IComplimentRepository } from '../interfaces'
 
 @EntityRepository(Compliment)
-class ComplimentRepository extends Repository<Compliment> implements IComplimentRepository {
+class ComplimentRepository extends Repository<Compliment> {
 
    async findByUserReceiver(user_receiver: string): Promise<Compliment[]> {
       const complimentsReceived: Promise<Compliment[]> = this.find({

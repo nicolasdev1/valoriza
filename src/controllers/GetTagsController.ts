@@ -5,7 +5,7 @@ import { GetAllTagsService } from '../services'
 
 class GetTagsController {
 
-   async call(_: Request, response: Response): Promise<Response> {
+   async call(request: Request, response: Response): Promise<Response> {
       const getAllTagsService: GetAllTagsService = new GetAllTagsService()
 
       const tags: Record<string, Tag> = await getAllTagsService.execute()

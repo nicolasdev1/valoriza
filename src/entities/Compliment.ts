@@ -1,10 +1,10 @@
 import {
    Column,
-   CreateDateColumn,
    Entity,
-   JoinColumn,
    ManyToOne,
-   PrimaryColumn
+   JoinColumn,
+   PrimaryColumn,
+   CreateDateColumn
 } from 'typeorm'
 import { v4 as uuidv4 } from 'uuid'
 

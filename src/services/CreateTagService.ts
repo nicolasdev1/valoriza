@@ -14,13 +14,13 @@ class CreateTagService {
          throw new AppError('Name is required')
       }
 
-      const tagAlreadyExists = await tagRepository.findOne({ name })
+      const tagAlreadyExists: Tag = await tagRepository.findOne({ name })
 
       if (tagAlreadyExists) {
          throw new AppError(`Tag with name ${name} already exists`)
       }
 
-      const tag = tagRepository.create({ name })
+      const tag: Tag = tagRepository.create({ name })
 
       await tagRepository.save(tag)
 

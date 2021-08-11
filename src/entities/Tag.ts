@@ -1,12 +1,12 @@
 import {
+   Column,
    Entity,
    PrimaryColumn,
-   Column,
    CreateDateColumn,
    UpdateDateColumn
 } from 'typeorm'
-import { Expose } from 'class-transformer'
 import { v4 as uuidv4 } from 'uuid'
+import { Expose } from 'class-transformer'
 
 import { tableNames } from '../constants'
 

@@ -1,11 +1,11 @@
 import {
-   NextFunction,
    Request,
-   Response
+   Response,
+   NextFunction
 } from 'express'
 
-import { HttpStatusCode } from '../enums'
 import { AppError } from '../errors'
+import { HttpStatusCode } from '../enums'
 
 const handleErrorMiddleware = (
    error: Error,

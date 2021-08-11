@@ -1,7 +1,7 @@
 import {
-   NextFunction,
    Request,
-   Response
+   Response,
+   NextFunction
 } from 'express'
 
 import { User } from '../entities'

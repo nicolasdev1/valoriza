@@ -1,17 +1,17 @@
-import CreateUserController from './CreateUserController'
+import GetTagsController from './GetTagsController'
 import CreateTagController from './CreateTagController'
+import CreateUserController from './CreateUserController'
 import AuthenticateController from './AuthenticateController'
 import CreateComplimentController from './CreateComplimentController'
-import GetComplimentsUserReceivedController from './GetComplimentsUserReceivedController'
 import GetComplimentsUserSentController from './GetComplimentsUserSentController'
-import GetTagsController from './GetTagsController'
+import GetComplimentsUserReceivedController from './GetComplimentsUserReceivedController'
 
 export {
-   CreateUserController,
+   GetTagsController,
    CreateTagController,
+   CreateUserController,
    AuthenticateController,
    CreateComplimentController,
-   GetComplimentsUserReceivedController,
    GetComplimentsUserSentController,
-   GetTagsController
+   GetComplimentsUserReceivedController
 }

@@ -1,7 +1,7 @@
 import {
-   MigrationInterface,
+   Table,
    QueryRunner,
-   Table
+   MigrationInterface
 } from 'typeorm'
 
 import { tableNames } from '../../constants'
