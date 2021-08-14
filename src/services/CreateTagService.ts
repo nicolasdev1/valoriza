@@ -14,13 +14,15 @@ class CreateTagService {
          throw new AppError('Name is required')
       }
 
-      const tagAlreadyExists: Tag = await tagRepository.findOne({ name })
+      const correctTagName: string = name.toLowerCase().replace(/\W/g, '-')
+
+      const tagAlreadyExists: Tag = await tagRepository.findOne({ name: correctTagName })
 
       if (tagAlreadyExists) {
-         throw new AppError(`Tag with name ${name} already exists`)
+         throw new AppError(`Tag with name ${correctTagName} already exists`)
       }
 
-      const tag: Tag = tagRepository.create({ name })
+      const tag: Tag = tagRepository.create({ name: correctTagName })
 
       await tagRepository.save(tag)
 

@@ -11,6 +11,7 @@ import {
 } from './controllers'
 import { routesNomenclature } from './constants'
 import { ensureAdministratorMiddleware, ensureAuthenticationMiddleware } from './middlewares'
+import GetUsersController from './controllers/GetUsersController'
 
 const router: Router = Router()
 
@@ -23,6 +24,7 @@ const createComplimentController: CreateComplimentController = new CreateComplim
 const getComplimentsUserSentController: GetComplimentsUserSentController = new GetComplimentsUserSentController()
 const getComplimentsUserReceivedController: GetComplimentsUserReceivedController = new GetComplimentsUserReceivedController()
 const getTagsController: GetTagsController = new GetTagsController()
+const getUsersController: GetUsersController = new GetUsersController()
 
 router.post(routesNomenclature.SESSIONS, authenticateController.call)
 router.post(routesNomenclature.USERS, createUserController.call)
@@ -35,5 +37,6 @@ router.post(routesNomenclature.COMPLIMENTS, createComplimentController.call)
 router.get(routesNomenclature.USERS_COMPLIMENTS_SENT, getComplimentsUserSentController.call)
 router.get(routesNomenclature.USERS_COMPLIMENTS_RECEIVED, getComplimentsUserReceivedController.call)
 router.get(routesNomenclature.TAGS, getTagsController.call)
+router.get(routesNomenclature.USERS, getUsersController.call)
 
 export default router
